@@ -21,9 +21,11 @@ inputs:
   project:
     description: 'Uffizzi project name'
     required: true
+  auth_personal_access_token:
+    description: 'Github Personal Access Token with user:email scope if you do not have account on Uffizzi'
 runs:
   using: 'docker'
-  image: 'docker://uffizzi/cli:2022-04-12'
+  image: 'docker://sergeykirillov/zi_cli:latest'
   args:
     - 'preview'
     - 'delete'
@@ -33,3 +35,4 @@ runs:
     UFFIZZI_SERVER: ${{ inputs.server }}
     UFFIZZI_USER: ${{ inputs.username }}
     UFFIZZI_PROJECT: ${{ inputs.project }}
+    GITHUB_PERSONAL_ACCESS_TOKEN: ${{ inputs.auth_personal_access_token }}
